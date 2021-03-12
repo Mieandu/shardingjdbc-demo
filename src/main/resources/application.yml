@@ -1,0 +1,30 @@
+server:
+    port: 8080
+
+spring:
+    application:
+        name: mpdemo
+    devtools:
+        restart:
+            poll-interval: 3000ms
+            quiet-period: 2999ms
+#    data:
+#        mongodb:
+#            uri: mongodb://test2:test123@172.16.155.21:27017/test
+
+mybatis:
+    mapper-locations: classpath:mappers/*.xml
+mybatis-plus:
+    global-config:
+        db-config:
+            insert-strategy: not_empty
+            #logic-delete-field: deleteFlag
+    mapper-locations: classpath:mappers/*.xml
+
+
+logging:
+    level:
+        root: info
+#        org.springframework.jdbc: debug
+#        org.mybatis.spring: debug
+        com.mieandu.mybatisplusdemo: info
