@@ -2,7 +2,7 @@ ShardingSphere-Jdbc Demo
 
 [ShardingSphere]("https://shardingsphere.apache.org")是目前最热门的开源分布式数据库解决方案之一，相信将来会越来越主流
 
-本Demo完成了以下功能的配置
+本Demo覆盖了Sharding-Jdbc的主要功能
 
 1. 分库分表测试用例
    - 数据插入
