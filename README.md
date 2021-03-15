@@ -1,4 +1,4 @@
-ShardingSphere-Jdbc学习Demo
+ShardingSphere-Jdbc Demo
 
 [ShardingSphere]("https://shardingsphere.apache.org")是目前最热门的开源分布式数据库解决方案之一，相信将来会越来越主流
 
