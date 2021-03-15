@@ -1,6 +1,6 @@
 ShardingSphere-Jdbc Demo
 
-[ShardingSphere]("https://shardingsphere.apache.org")是目前最热门的开源分布式数据库解决方案之一，相信将来会越来越主流
+[ShardingSphere](https://shardingsphere.apache.org)是目前最热门的开源分布式数据库解决方案之一，相信将来会越来越主流
 
 本Demo覆盖了Sharding-Jdbc的主要功能
 
@@ -12,6 +12,6 @@ ShardingSphere-Jdbc Demo
    - 排序查询
 2. 分布式事务
    - XA事务
-   - [Seata事务]("https://shardingsphere.apache.org/document/current/cn/user-manual/shardingsphere-jdbc/usage/transaction/seata/")
+   - [Seata事务](https://shardingsphere.apache.org/document/current/cn/user-manual/shardingsphere-jdbc/usage/transaction/seata/)
 3. 影子库
 4. 强制路由
