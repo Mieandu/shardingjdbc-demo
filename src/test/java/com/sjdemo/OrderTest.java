@@ -1,19 +1,19 @@
 package com.sjdemo;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.sjdemo.domain.OrderBO;
 import com.sjdemo.domain.OrderDO;
 import com.sjdemo.mapper.OrderMapper;
 import com.sjdemo.service.OrderService;
+import org.apache.shardingsphere.transaction.annotation.ShardingTransactionType;
+import org.apache.shardingsphere.transaction.core.TransactionType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Wrapper;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -21,16 +21,24 @@ import java.util.List;
 public class OrderTest {
     @Autowired
     OrderMapper orderMapper;
+    @Autowired
+    OrderService orderService;
 
     @Test
+    @Transactional
+    @ShardingTransactionType(TransactionType.BASE)
     public void createTest() {
         for(long i =10; i<=20 ; i++){
             OrderDO orderDO = new OrderDO();
-            orderDO.setUserId(i+1);
+            orderDO.setUserId(i);
             orderDO.setOrderId(i);
             orderDO.setRemark("remark:" + i );
-            orderDO.setShadow(true);
-            orderMapper.insert(orderDO);
+            orderDO.setShadow(false);
+            orderService.createOrder(orderDO);
+            if(i % 2 ==1){
+                throw new RuntimeException();
+            }
+            System.out.println("创建订单：" + i);
         }
     }
 

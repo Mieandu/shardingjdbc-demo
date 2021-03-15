@@ -3,11 +3,9 @@ package com.sjdemo.domain;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.sjdemo.mapper.OrderMapper;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Data
 @EqualsAndHashCode(callSuper = false)

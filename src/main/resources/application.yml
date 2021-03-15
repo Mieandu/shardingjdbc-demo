@@ -3,7 +3,7 @@ server:
 
 spring:
     application:
-        name: mpdemo
+        name: sjdemo
     devtools:
         restart:
             poll-interval: 3000ms
