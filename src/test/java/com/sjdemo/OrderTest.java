@@ -83,10 +83,6 @@ public class OrderTest {
         orderBOS.forEach(orderDO -> System.out.println(orderDO.toString()));
     }
 
-    @Test
-    public void strictMap(){
-        System.out.println("强制路由");
-    }
 
     public static void printResult(List<OrderDO> orderDOS){
         orderDOS.forEach(orderDO -> System.out.println(orderDO.toString()));
