@@ -66,6 +66,6 @@ rules:
       - ds-shadow0
       - ds-shadow1
 props:
-  sql-simple: true
+  sql-show: true
 
 

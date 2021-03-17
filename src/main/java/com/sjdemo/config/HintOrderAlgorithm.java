@@ -40,4 +40,15 @@ public class HintOrderAlgorithm implements HintShardingAlgorithm<Long> {
     public void setProps(Properties properties) {
 
     }
+
+    public static void main(String[] args) {
+        String hashs= "wm9JmOBgAAApyzMMpYc5542gi0iWnEpA144";
+        System.out.println(hash(hashs) %64);
+
+    }
+
+    static final int hash(Object key) {
+        int h;
+        return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+    }
 }

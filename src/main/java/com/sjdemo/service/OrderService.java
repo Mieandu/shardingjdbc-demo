@@ -1,22 +1,22 @@
 package com.sjdemo.service;
 
-import com.sjdemo.domain.OrderDO;
+import com.sjdemo.domain.ShadowOrder;
 import com.sjdemo.mapper.OrderMapper;
-import org.apache.shardingsphere.transaction.annotation.ShardingTransactionType;
-import org.apache.shardingsphere.transaction.core.TransactionType;
+import com.sjdemo.mapper.ShadowOrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class OrderService {
 
     @Autowired
     OrderMapper orderMapper;
+    @Autowired
+    ShadowOrderMapper shadowOrderMapper;
 
-    @Transactional
-    @ShardingTransactionType(TransactionType.BASE)
-    public void createOrder(OrderDO orderDO){
-        orderMapper.insert(orderDO);
+    //@Transactional
+   // @ShardingTransactionType(TransactionType.XA)
+    public void createOrder(ShadowOrder orderDO){
+        shadowOrderMapper.insert(orderDO);
     }
 }

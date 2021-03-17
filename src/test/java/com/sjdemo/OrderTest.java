@@ -3,16 +3,14 @@ package com.sjdemo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.sjdemo.domain.OrderBO;
 import com.sjdemo.domain.OrderDO;
+import com.sjdemo.domain.ShadowOrder;
 import com.sjdemo.mapper.OrderMapper;
 import com.sjdemo.service.OrderService;
-import org.apache.shardingsphere.transaction.annotation.ShardingTransactionType;
-import org.apache.shardingsphere.transaction.core.TransactionType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,26 +23,28 @@ public class OrderTest {
     OrderService orderService;
 
     @Test
-    @Transactional
-    @ShardingTransactionType(TransactionType.BASE)
+    //@Transactional
+    //@ShardingTransactionType(TransactionType.XA)
     public void createTest() {
         for(long i =10; i<=20 ; i++){
-            OrderDO orderDO = new OrderDO();
+            ShadowOrder orderDO = new ShadowOrder();
             orderDO.setUserId(i);
             orderDO.setOrderId(i);
             orderDO.setRemark("remark:" + i );
-            orderDO.setShadow(false);
+            orderDO.setShadow(true);
             orderService.createOrder(orderDO);
-            if(i % 2 ==1){
+          /*  if(i % 2 ==1){
                 throw new RuntimeException();
-            }
+            }*/
             System.out.println("创建订单：" + i);
         }
     }
 
     @Test
     public void selectAll(){
-        List<OrderDO> orderDOS = orderMapper.selectList(null);
+        QueryWrapper<OrderDO> wrapper = new QueryWrapper<>();
+        wrapper.eq("shadow", true);
+        List<OrderDO> orderDOS = orderMapper.selectList(wrapper);
         orderDOS.forEach(orderDO -> System.out.println(orderDO.toString()));
     }
 
