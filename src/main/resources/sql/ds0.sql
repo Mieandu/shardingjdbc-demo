@@ -41,6 +41,28 @@ CREATE TABLE `t_order1`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
+
+DROP TABLE IF EXISTS `t_order_item0`;
+CREATE TABLE `t_order_item0` (
+                                 `id` bigint(20) NOT NULL COMMENT '主键',
+                                 `order_id` bigint(20) DEFAULT NULL,
+                                 `item_id` bigint(20) DEFAULT NULL,
+                                 `created_time` datetime DEFAULT NULL,
+                                 `user_id` bigint(20) DEFAULT NULL,
+                                 PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `t_order_item1`;
+CREATE TABLE `t_order_item1` (
+                                 `id` bigint(20) NOT NULL COMMENT '主键',
+                                 `order_id` bigint(20) DEFAULT NULL,
+                                 `item_id` bigint(20) DEFAULT NULL,
+                                 `created_time` datetime DEFAULT NULL,
+                                 `user_id` bigint(20) DEFAULT NULL,
+                                 PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 -- ----------------------------
 -- Table structure for undo_log
 -- ----------------------------

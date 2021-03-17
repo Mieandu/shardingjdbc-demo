@@ -45,6 +45,20 @@ rules:
           # 强制路由
           #hint:
           # shardingAlgorithmName: com.sjdemo.config.HintOrderAlgorithm
+
+      t_order_item:
+        actualDataNodes: ds${0..1}.t_order_item${0..1}
+        # 配置分库策略
+        databaseStrategy:
+          standard:
+            shardingColumn: user_id
+            shardingAlgorithmName: database_inline
+        # 配置分表策略
+        tableStrategy:
+          # 标准分表策略（和强制路由只能二选一）
+          standard:
+            shardingColumn: order_id
+            shardingAlgorithmName: table_inline
     # 配置分片算法
     shardingAlgorithms:
       database_inline:
@@ -55,6 +69,9 @@ rules:
         type: INLINE
         props:
           algorithm-expression: t_order${order_id % 2}
+    bindingTables:
+      - t_order,t_order_item
+
 
   - !SHADOW
     column: shadow

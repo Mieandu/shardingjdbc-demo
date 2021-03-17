@@ -15,3 +15,4 @@ ShardingSphere-Jdbc Demo
    - [Seata事务](https://shardingsphere.apache.org/document/current/cn/user-manual/shardingsphere-jdbc/usage/transaction/seata/)
 3. 影子库
 4. 强制路由
+5. 绑定表

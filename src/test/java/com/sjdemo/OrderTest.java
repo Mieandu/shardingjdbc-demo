@@ -3,6 +3,7 @@ package com.sjdemo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.sjdemo.domain.OrderBO;
 import com.sjdemo.domain.OrderDO;
+import com.sjdemo.domain.OrderDetailBO;
 import com.sjdemo.domain.ShadowOrder;
 import com.sjdemo.mapper.OrderMapper;
 import com.sjdemo.service.OrderService;
@@ -81,6 +82,14 @@ public class OrderTest {
     public void groupBy(){
         List<OrderBO> orderBOS = orderMapper.selectOrderCount();
         orderBOS.forEach(orderDO -> System.out.println(orderDO.toString()));
+    }
+
+    @Test
+    public void join(){
+        Long orderId = 12L;
+        List<OrderDetailBO> orderDetailBOS = orderMapper.selectOrderDetail(orderId);
+        orderDetailBOS.forEach(orderDO -> System.out.println(orderDO.toString()));
+
     }
 
 
