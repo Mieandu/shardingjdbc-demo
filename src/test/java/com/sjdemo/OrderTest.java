@@ -42,6 +42,17 @@ public class OrderTest {
     }
 
     @Test
+    public void singleCreateTest() {
+            ShadowOrder orderDO = new ShadowOrder();
+            orderDO.setUserId(1L);
+            orderDO.setOrderId(1L);
+            orderDO.setRemark("remark:" + 1 );
+            orderDO.setShadow(true);
+            orderService.createOrder(orderDO);
+            System.out.println("创建订单：" + 1);
+    }
+
+    @Test
     public void selectAll(){
         QueryWrapper<OrderDO> wrapper = new QueryWrapper<>();
         wrapper.eq("shadow", true);

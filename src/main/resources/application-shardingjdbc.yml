@@ -41,7 +41,7 @@ rules:
           # 标准分表策略（和强制路由只能二选一）
           standard:
             shardingColumn: order_id
-            shardingAlgorithmName: table_inline
+            shardingAlgorithmName: table_hash_mode
           # 强制路由
           #hint:
           # shardingAlgorithmName: com.sjdemo.config.HintOrderAlgorithm
@@ -68,7 +68,12 @@ rules:
       table_inline:
         type: INLINE
         props:
-          algorithm-expression: t_order${order_id % 2}
+          algorithm-expression: t_order_item${order_id % 2}
+
+      table_hash_mode:
+        type: HASH_MOD
+        props:
+          sharding-count: '2'
     bindingTables:
       - t_order,t_order_item
 
